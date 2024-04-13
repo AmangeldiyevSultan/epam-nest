@@ -17,7 +17,7 @@ export class SpeechController {
       const transcript = await this.speechService.transcribe(file);
       return { result: transcript, error: null };
     } catch (error) {
-      return { result: null, error: error.message };
+      return { result: null, error: new Error(error.message) };
     }
   }
 }
