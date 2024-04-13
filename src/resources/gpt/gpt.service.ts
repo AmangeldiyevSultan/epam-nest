@@ -55,7 +55,7 @@ export class GptService {
   }
 
   async evaluateResponse(dto: EvaluateResultGptDto): Promise<{ result: any; error: any }> {
-    const prompt = `Given the task in Kazakh: "${dto.taskText}", evaluate the response: "${dto.responseText}". Is the response correct and culturally appropriate? Provide a brief comment (up to 10 words) starting with "Дұрыс" if correct or "Дұрыс емес" if incorrect.`;
+    const prompt = `Given the task in Kazakh: "${dto.taskText}", evaluate the response: "${dto.responseText}". Is the response correct and culturally appropriate? Provide a brief comment (up to 10 words) starting with "Дұрыс" if correct or "Дұрыс емес" if incorrect. Response shoud be { isCorrrct: boolean, which depend on the start of sentence Дұрыс or Дұрыс емес, comment: response from gpt }`;
     const data = {
       model: "gpt-4-turbo",
       messages: [
@@ -73,14 +73,9 @@ export class GptService {
     };
 
     try {
-      console.log(this.apiUrl, data, { headers });
       const response = await this.httpService.post(this.apiUrl, data, { headers }).toPromise();
-      console.log(response.data.choices[0].message);
       return { result: JSON.parse(response.data.choices[0].message.content), error: null };
     } catch (error) {
-      console.log("\n\n\n\n\n");
-      console.log(error);
-      console.log("\n\n\n\n\n");
       return { result: null, error: new Error(error.toString()) }
     }
   }

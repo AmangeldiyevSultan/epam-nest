@@ -15,8 +15,10 @@ export class SpeechController {
   async uploadFile(@UploadedFile() file: Express.Multer.File, @Body() dto: FileUploadDto) {
     try {
       const transcript = await this.speechService.transcribe(file);
+      console.log(transcript);
       return { result: transcript, error: null };
     } catch (error) {
+      console.log(error);
       return { result: null, error: new Error(error.message) };
     }
   }
