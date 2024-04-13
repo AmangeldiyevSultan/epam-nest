@@ -28,8 +28,6 @@ export class SpeechService {
   }
 
   async transcribe(file: Express.Multer.File): Promise<string> {
-    console.log(file);
-    
     const audio = {
       content: file.buffer.toString('base64'),
     };
