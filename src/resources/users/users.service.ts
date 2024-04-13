@@ -27,6 +27,7 @@ export class UsersService {
   async findByToken(token: string) {
     const decodedToken = this.jwtService.decode(token);
     const user = this.userModel.findById(decodedToken.id);
-    return { result: user, error: null };
+    const userObj = (await user).toObject();
+    return { result: userObj, error: null };
   }
 }
