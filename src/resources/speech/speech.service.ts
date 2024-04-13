@@ -29,6 +29,11 @@ export class SpeechService {
 
   async transcribe(file: Express.Multer.File): Promise<string> {
     console.log(file);
+    console.log(GOOGLE_CLOUD_PROJECT_ID,
+      GOOGLE_PRIVATE_KEY_ID,
+      GOOGLE_PRIVATE_KEY,
+      GOOGLE_CLIENT_EMAIL,
+      GOOGLE_CLIENT_ID);
     const audio = {
       content: file.buffer.toString('base64'),
     };
