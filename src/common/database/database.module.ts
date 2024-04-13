@@ -8,7 +8,7 @@ const { DB_URL } = process.env;
 @Module({
   imports: [
     ConfigModule,
-    MongooseModule.forRoot(DB_URL),
+    MongooseModule.forRoot("mongodb+srv://mongouser:0fo9E6UTTr9csbJR@cluster0.sgal5gg.mongodb.net/menger"),
     UsersModule
   ],
 })

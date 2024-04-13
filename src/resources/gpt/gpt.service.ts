@@ -75,7 +75,7 @@ export class GptService {
     try {
       console.log(this.apiUrl, data, { headers });
       const response = await this.httpService.post(this.apiUrl, data, { headers }).toPromise();
-      console.log(response.data);
+      console.log(response.data.choices[0].message);
       return { result: JSON.parse(response.data.choices[0].message.content), error: null };
     } catch (error) {
       console.log("\n\n\n\n\n");
