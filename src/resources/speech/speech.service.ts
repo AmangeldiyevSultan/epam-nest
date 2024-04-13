@@ -38,7 +38,7 @@ export class SpeechService {
       content: file.buffer.toString('base64'),
     };
     const config = {
-      encoding: 'MP3' as const,
+      encoding: 'FLAC' as const,
       sampleRateHertz: 48000,
       languageCode: 'kk-KZ',
     };
