@@ -1,6 +1,6 @@
 # Build
 FROM node:20-alpine AS build
-WORKDIR /usr/src/app
+WORKDIR /
 COPY package*.json  ./
 RUN npm ci
 COPY . .
