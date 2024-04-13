@@ -28,7 +28,7 @@ export class GptService {
     return `Create a brief speaking task for a Kazakh language learner at a ${location}. Only one task, without AND. Please keep the instruction under 17 words in Kazakh. Response should be like object with field 'task'`;
   }
 
-  async generateResponse(gptDto: CreateTaskGptDto): Promise<{ result: any; error: any }> {
+  async createGrammarTask(gptDto: CreateTaskGptDto): Promise<{ result: any; error: any }> {
     const prompt = this.generateSpeakingTask(gptDto.locations);
     const data = {
       model: "gpt-4-turbo",

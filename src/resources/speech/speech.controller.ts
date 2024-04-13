@@ -19,7 +19,7 @@ export class SpeechController {
       return { result: transcript, error: null };
     } catch (error) {
       console.log(error);
-      return { result: null, error: new Error(error.message) };
+      return { result: null, error: new Error(error.toString()) };
     }
   }
 }

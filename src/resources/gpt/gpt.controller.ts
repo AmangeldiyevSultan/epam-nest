@@ -7,10 +7,10 @@ import { EvaluateResultGptDto } from './dto/evaluate-response-gpt.dto';
 export class GptController {
   constructor(private readonly gptService: GptService) { }
 
-  @Post()
+  @Post("/grammar")
   @HttpCode(HttpStatus.OK)
   generateResponse(@Body() dto: CreateTaskGptDto) {
-    return this.gptService.generateResponse(dto);
+    return this.gptService.createGrammarTask(dto);
   }
 
   @Post("/speaking/check")
